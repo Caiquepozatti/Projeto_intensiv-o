@@ -7,8 +7,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.pozatticaique.dslist.Repositories.GameListRepository;
 import com.pozatticaique.dslist.Repositories.GameRepository;
+import com.pozatticaique.dslist.entities.Belonging;
 import com.pozatticaique.dslist.entities.Game;
+import com.pozatticaique.dslist.entities.GameList;
 
 @Configuration
 @Profile("test")
@@ -16,6 +19,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private GameRepository gameRepository;
+	
+	@Autowired
+	private GameListRepository gameListRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -30,8 +36,32 @@ public class TestConfig implements CommandLineRunner {
 		 Game g8 = new Game(null,"Ori and the Blind Forest", 2015, "Platform", "XBox, Playstation, PC", 4.0, "https://raw.githubusercontent.com/devsuperior/java-spring-dslist/main/resources/8.png", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse officiis corrupti unde repellat non quibusdam! Id nihil itaque ipsum!", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorum illum placeat eligendi, quis maiores veniam. Incidunt dolorum, nisi deleniti dicta odit voluptatem nam provident temporibus reprehenderit blanditiis consectetur tenetur. Dignissimos blanditiis quod corporis iste, aliquid perspiciatis architecto quasi tempore ipsam voluptates ea ad distinctio, sapiente qui, amet quidem culpa.");
 		 Game g9 = new Game(null,"Cuphead", 2017, "Platform", "XBox, Playstation, PC", 4.6, "'https://raw.githubusercontent.com/devsuperior/java-spring-dslist/main/resources/9.png", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse officiis corrupti unde repellat non quibusdam! Id nihil itaque ipsum!", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorum illum placeat eligendi, quis maiores veniam. Incidunt dolorum, nisi deleniti dicta odit voluptatem nam provident temporibus reprehenderit blanditiis consectetur tenetur. Dignissimos blanditiis quod corporis iste, aliquid perspiciatis architecto quasi tempore ipsam voluptates ea ad distinctio, sapiente qui, amet quidem culpa.");
 		 Game g10 = new Game(null,"Sonic CD", 1993, "Platform", "Sega CD, PC", 4.0, "https://raw.githubusercontent.com/devsuperior/java-spring-dslist/main/resources/10.png", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse officiis corrupti unde repellat non quibusdam! Id nihil itaque ipsum!", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorum illum placeat eligendi, quis maiores veniam. Incidunt dolorum, nisi deleniti dicta odit voluptatem nam provident temporibus reprehenderit blanditiis consectetur tenetur. Dignissimos blanditiis quod corporis iste, aliquid perspiciatis architecto quasi tempore ipsam voluptates ea ad distinctio, sapiente qui, amet quidem culpa.");
-		
+		 
 		 gameRepository.saveAll(Arrays.asList(g1,g2,g3,g4,g5,g6,g7,g8,g9,g10));
+		 
+		 GameList gl1 = new GameList(null,"Aventura e RPG");
+		 GameList gl2 = new GameList(null,"Jogos de plataforma");
+		 
+		 gameListRepository.saveAll(Arrays.asList(gl1,gl2));
+		 
+		 Belonging b1 = new Belonging(g1,gl1,0);
+		 Belonging b2 = new Belonging(g2,gl1,1);
+		 Belonging b3 = new Belonging(g3,gl1,2);
+		 Belonging b4 = new Belonging(g4,gl1,3);
+		 Belonging b5 = new Belonging(g5,gl1,4);
+		 Belonging b6 = new Belonging(g6,gl2,0);
+		 Belonging b7 = new Belonging(g7,gl2,1);
+		 Belonging b8 = new Belonging(g8,gl2,2);
+		 Belonging b9 = new Belonging(g9,gl2,3);
+		 Belonging b10 = new Belonging(g10,gl2,4);
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 	}
 
 }
