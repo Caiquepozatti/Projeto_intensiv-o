@@ -1,5 +1,6 @@
 package com.pozatticaique.dslist.entities.PKs;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import com.pozatticaique.dslist.entities.Game;
@@ -10,23 +11,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Embeddable
-public class BelongingPK {
-	
-	@ManyToOne
-	@JoinColumn(name ="game_id")
-	private Game game;
-	
-	@ManyToOne
-	@JoinColumn(name ="gameList_id")
-	private GameList gameList;
-	
-	public BelongingPK() {
-	}
+public class BelongingPK implements Serializable{
+	private static final long serialVersionUID = 1L;
 
-	public BelongingPK(Game game, GameList gameList) {
-		this.game = game;
-		this.gameList = gameList;
-	}
+	@ManyToOne
+    @JoinColumn(name = "game_id")
+    private Game game;
+
+    @ManyToOne
+    @JoinColumn(name = "list_id")
+    private GameList list;
 
 	public Game getGame() {
 		return game;
@@ -36,17 +30,17 @@ public class BelongingPK {
 		this.game = game;
 	}
 
-	public GameList getGameList() {
-		return gameList;
+	public GameList getList() {
+		return list;
 	}
 
-	public void setGameList(GameList gameList) {
-		this.gameList = gameList;
+	public void setList(GameList list) {
+		this.list = list;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(game, gameList);
+		return Objects.hash(game, list);
 	}
 
 	@Override
@@ -58,7 +52,6 @@ public class BelongingPK {
 		if (getClass() != obj.getClass())
 			return false;
 		BelongingPK other = (BelongingPK) obj;
-		return Objects.equals(game, other.game) && Objects.equals(gameList, other.gameList);
-	}
-	
+		return Objects.equals(game, other.game) && Objects.equals(list, other.list);
+	}	
 }

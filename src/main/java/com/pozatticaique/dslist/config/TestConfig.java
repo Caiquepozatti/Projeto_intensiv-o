@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.pozatticaique.dslist.Repositories.BelongingRepository;
 import com.pozatticaique.dslist.Repositories.GameListRepository;
 import com.pozatticaique.dslist.Repositories.GameRepository;
 import com.pozatticaique.dslist.entities.Belonging;
@@ -22,6 +23,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private GameListRepository gameListRepository;
+	
+	@Autowired
+	private BelongingRepository belongingRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -55,13 +59,7 @@ public class TestConfig implements CommandLineRunner {
 		 Belonging b9 = new Belonging(g9,gl2,3);
 		 Belonging b10 = new Belonging(g10,gl2,4);
 		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+		 belongingRepository.saveAll(Arrays.asList(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10));		 
 	}
 
 }

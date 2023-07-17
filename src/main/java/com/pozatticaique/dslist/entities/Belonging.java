@@ -15,25 +15,33 @@ public class Belonging implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@EmbeddedId
-	private BelongingPK id;
-	
+	private BelongingPK id = new BelongingPK();
+
 	private Integer position;
 	
 	public Belonging() {
 	}
-
-	public Belonging(Game game, GameList gameList, Integer position) {
+	
+	public Belonging (Game game, GameList gameList, Integer position) {
 		id.setGame(game);
-		id.setGameList(gameList);
+		id.setList(gameList);
 		this.position = position;
 	}
 
-	public BelongingPK getId() {
-		return id;
+	public void setGame(Game game) {
+		id.setGame(game);
 	}
 
-	public void setId(BelongingPK id) {
-		this.id = id;
+	public Game getGame() {
+		return id.getGame();
+	}
+
+	public void setList(GameList list) {
+		id.setList(list);
+	}
+
+	public GameList getList() {
+		return id.getList();
 	}
 
 	public Integer getPosition() {
@@ -59,5 +67,5 @@ public class Belonging implements Serializable{
 			return false;
 		Belonging other = (Belonging) obj;
 		return Objects.equals(id, other.id);
-	}	
+	}
 }
