@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pozatticaique.dslist.DTO.GameDTO;
 import com.pozatticaique.dslist.DTO.GameMinDTO;
-import com.pozatticaique.dslist.Repositories.GameListRepository;
 import com.pozatticaique.dslist.Repositories.GameRepository;
 import com.pozatticaique.dslist.entities.Game;
 import com.pozatticaique.dslist.projections.GameProjection;
@@ -19,11 +18,7 @@ import com.pozatticaique.dslist.projections.GameProjection;
 public class GameService {
 	
 	@Autowired
-	private GameRepository gameRepository;	
-	
-	@Autowired
-	private GameListRepository gameListRepository;	
-	
+	private GameRepository gameRepository;		
 	
 	@Transactional (readOnly = true) //Import spring, não jakart
 	public List<GameMinDTO> findAll(){

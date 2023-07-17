@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pozatticaique.dslist.DTO.GameListDTO;
 import com.pozatticaique.dslist.Repositories.GameListRepository;
+import com.pozatticaique.dslist.Repositories.GameRepository;
 import com.pozatticaique.dslist.entities.GameList;
 import com.pozatticaique.dslist.projections.GameProjection;
 
@@ -17,6 +18,9 @@ public class GameListService {
 	
 	@Autowired
 	private GameListRepository gameListRepository;
+	
+	@Autowired
+	private GameRepository gameRepository;
 	
 	@Transactional
 	public List<GameListDTO> findAll(){
