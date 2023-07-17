@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pozatticaique.dslist.DTO.GameDTO;
 import com.pozatticaique.dslist.DTO.GameMinDTO;
+import com.pozatticaique.dslist.Repositories.GameListRepository;
 import com.pozatticaique.dslist.Repositories.GameRepository;
 import com.pozatticaique.dslist.entities.Game;
 import com.pozatticaique.dslist.projections.GameProjection;
@@ -19,6 +20,9 @@ public class GameService {
 	
 	@Autowired
 	private GameRepository gameRepository;	
+	
+	@Autowired
+	private GameListRepository gameListRepository;	
 	
 	
 	@Transactional (readOnly = true) //Import spring, não jakart
@@ -47,5 +51,7 @@ public class GameService {
 		List<GameProjection> games = gameRepository.searchByList(listId);
 		return games.stream().map(GameMinDTO::new).toList();
 	}
+	
+	
 
 }
