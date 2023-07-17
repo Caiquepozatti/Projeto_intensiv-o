@@ -15,7 +15,7 @@ import com.pozatticaique.dslist.entities.Game;
 import com.pozatticaique.dslist.entities.GameList;
 
 @Configuration
-@Profile("dev")
+@Profile("prod")
 public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
