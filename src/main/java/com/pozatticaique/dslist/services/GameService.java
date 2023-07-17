@@ -11,13 +11,15 @@ import com.pozatticaique.dslist.DTO.GameDTO;
 import com.pozatticaique.dslist.DTO.GameMinDTO;
 import com.pozatticaique.dslist.Repositories.GameRepository;
 import com.pozatticaique.dslist.entities.Game;
+import com.pozatticaique.dslist.projections.GameProjection;
 
 
 @Service
 public class GameService {
 	
 	@Autowired
-	private GameRepository gameRepository;
+	private GameRepository gameRepository;	
+	
 	
 	@Transactional (readOnly = true) //Import spring, não jakart
 	public List<GameMinDTO> findAll(){
@@ -38,6 +40,12 @@ public class GameService {
 		Game game = gameRepository.findById(id).get();
 		GameDTO dto = new GameDTO(game);
 		return dto;
+	}
+	
+	@Transactional(readOnly = true)
+	public List<GameMinDTO> findByGameList(Long listId) {
+		List<GameProjection> games = gameRepository.searchByList(listId);
+		return games.stream().map(GameMinDTO::new).toList();
 	}
 
 }

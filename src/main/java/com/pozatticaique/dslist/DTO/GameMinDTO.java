@@ -1,6 +1,7 @@
 package com.pozatticaique.dslist.DTO;
 
 import com.pozatticaique.dslist.entities.Game;
+import com.pozatticaique.dslist.projections.GameProjection;
 
 public class GameMinDTO {
 	
@@ -20,7 +21,16 @@ public class GameMinDTO {
 		imgUrl = obj.getImgUrl();
 		shortDescription = obj.getShortDescription();
 	}
+	
+	public GameMinDTO(GameProjection obj) {
+		id = obj.getId();
+		title = obj.getTitle();
+		year = obj.getGameYear();
+		imgUrl = obj.getImgUrl();
+		shortDescription = obj.getShortDescription();
+	}
 
+	
 	public Long getId() {
 		return id;
 	}
